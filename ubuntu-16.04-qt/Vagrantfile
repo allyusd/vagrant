@@ -66,7 +66,11 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y build-essential libgl1-mesa-dev
+    sudo apt-get update
+    sudo apt-get install -y build-essential libgl1-mesa-dev
+    sudo add-apt-repository ppa:beineri/opt-qt57-xenial
+    sudo apt-get update
+    sudo apt-get install -y qt-latest
+    echo . "/opt/qt57/bin/qt57-env.sh" >> .bashrc
   SHELL
 end
